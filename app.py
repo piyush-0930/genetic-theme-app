@@ -3,33 +3,30 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app)  # Allow frontend access
+CORS(app, origins=["https://genetic-themes.onrender.com"])  # ✅ ALLOW ONLY FRONTEND URL
 
 @app.route('/generate-theme', methods=['POST'])
 def generate_theme():
     traits = request.json or {}
 
-    # Helper to lowercase safely
     def get_trait(name):
         return traits.get(name, "").strip().lower()
 
     eye_color = get_trait("eye_color")
     chronotype = get_trait("chronotype")
     personality = get_trait("personality")
-    hair_color = get_trait("hair_color")  # optional if you want to extend later
-    skin_tone = get_trait("skin_tone")    # optional if you want to extend later
+    hair_color = get_trait("hair_color")
+    skin_tone = get_trait("skin_tone")
 
-    # Primary color based on eye_color
     eye_color_map = {
-        "hazel": "#ADD8E6",  # light blue
-        "green": "#A8D5BA",  # pastel green
-        "black": "#FFFFFF",  # white
+        "hazel": "#ADD8E6",
+        "green": "#A8D5BA",
+        "black": "#FFFFFF",
         "blue": "#87CEEB",
         "brown": "#A0522D"
     }
-    primary = eye_color_map.get(eye_color, "#FFC0CB")  # pink default
+    primary = eye_color_map.get(eye_color, "#FFC0CB")
 
-    # Background & secondary_bg based on chronotype
     if chronotype == "midnight-owl":
         background = "#121212"
         secondary_bg = "#1f1f1f"
@@ -39,7 +36,6 @@ def generate_theme():
         secondary_bg = "#f9f4e8"
         text_color = "#000000"
 
-    # Font and weight based on personality
     personality_map = {
         "bold": ("Impact, sans-serif", "bold"),
         "creative": ("Comic Sans MS, cursive, sans-serif", "normal"),
@@ -50,7 +46,6 @@ def generate_theme():
     }
     font, font_weight = personality_map.get(personality, ("Georgia, serif", "normal"))
 
-    # Accent color fixed for now (could be customized later)
     accent = "#ff4081"
 
     theme = {

@@ -24,7 +24,7 @@ function applyTheme(theme) {
 // Fetch theme from backend by traits
 async function fetchTheme(traits) {
   try {
-    const res = await fetch('https://genetic-theme.onrender.com/generate-theme', {
+    const res = await fetch('https://genetic-theme-backend.onrender.com/generate-theme', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(traits),
