@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Genetic Traits to Theme Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Genetic Traits to Theme Generator</h1>
+
+    <section>
+      <label for="traitFile">Upload Trait JSON File:</label>
+      <input type="file" id="traitFile" accept=".json" />
+      <button id="uploadApplyBtn">Upload & Apply Theme</button>
+    </section>
+
+    <section>
+      <button id="defaultThemeBtn">Generate Default Theme</button>
+    </section>
+
+    <section>
+      <button id="resetThemeBtn">Reset Theme</button>
+    </section>
+
+    <section id="themePreview" aria-live="polite">
+      This is a preview area
+    </section>
+
+    <section class="manual-editor">
+      <label for="traitEditor">Enter Traits Manually (JSON):</label>
+      <textarea id="traitEditor" rows="6" spellcheck="false">
+{
+  "eye_color": "blue",
+  "chronotype": "morning"
+}
+      </textarea>
+      <div id="jsonError" class="error-msg" style="display: none;"></div>
+      <button id="submitTraitsBtn">Submit Traits</button>
+    </section>
+
+    <section class="trait-selectors">
+      <h3>Choose Traits:</h3>
+
+      <label for="eyeColorSelect">Eye Color:</label>
+      <select id="eyeColorSelect">
+        <option value="">--Select--</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="hazel">Hazel</option>
+        <option value="brown">Brown</option>
+        <option value="black">Black</option>
+      </select>
+
+      <label for="chronotypeSelect">Chronotype:</label>
+      <select id="chronotypeSelect">
+        <option value="">--Select--</option>
+        <option value="morning">Morning</option>
+        <option value="midday">Midday</option>
+        <option value="evening">Evening</option>
+        <option value="midnight-owl">Midnight Owl</option>
+      </select>
+
+      <label for="hairColorSelect">Hair Color:</label>
+      <select id="hairColorSelect">
+        <option value="">--Select--</option>
+        <option value="blonde">Blonde</option>
+        <option value="brown">Brown</option>
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="gray">Gray</option>
+      </select>
+
+      <label for="skinToneSelect">Skin Tone:</label>
+      <select id="skinToneSelect">
+        <option value="">--Select--</option>
+        <option value="fair">Fair</option>
+        <option value="medium">Medium</option>
+        <option value="olive">Olive</option>
+        <option value="brown">Brown</option>
+        <option value="dark">Dark</option>
+      </select>
+
+      <label for="personalitySelect">Personality Type:</label>
+      <select id="personalitySelect">
+        <option value="">--Select--</option>
+        <option value="introvert">Introvert</option>
+        <option value="extrovert">Extrovert</option>
+        <option value="ambivert">Ambivert</option>
+        <option value="analytical">Analytical</option>
+        <option value="creative">Creative</option>
+      </select>
+
+      <button id="applySelectedTraitsBtn">Apply Selected Traits</button>
+    </section>
+
+    <section>
+      <button id="downloadThemeBtn">Download Theme JSON</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
